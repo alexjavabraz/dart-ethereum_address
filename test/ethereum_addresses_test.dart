@@ -163,4 +163,24 @@ void main() {
       });
     });
   });
+
+    group("isValidEthereumByChainId", () {
+    test("Test addresses with chainId 31", () {
+      [
+        "0xDcf41bCB0794456b7Eb90d9242C3C41502900f06",
+        "0x123DBf08e6a35c7491B1D45Fd5C38DFEEB1923e8",
+      ].forEach((addr) {
+        expect(toChecksumAddress(addr, 30), isTrue);
+      });
+    });
+        test("Test addresses with chainId 1", () {
+      [
+        "0x123Dbf08E6a35C7491b1D45fd5C38dfeeb1923E8",
+        "0x123Dbf08E6a35C7491b1D45fd5C38dfeeb1923E8",
+      ].forEach((addr) {
+        expect(toChecksumAddress(addr, 1), isTrue);
+      });
+    });
+  });
+  
 }
